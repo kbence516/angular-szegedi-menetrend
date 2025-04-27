@@ -1,13 +1,13 @@
-.table-container {
-  display: inline-block;
-}
-
-.table {
-  width: auto;
-}
-
 .mat-column-hour {
   border-right: 1px solid currentColor;
+}
+
+.mat-mdc-table {
+  min-width: 400px;
+}
+
+table {
+  width: auto;
 }
 
 .minutes {

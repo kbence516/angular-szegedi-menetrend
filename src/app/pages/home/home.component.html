@@ -3,7 +3,7 @@
 <mat-grid-list cols="7" rowHeight="1:1">
   @for (route of routes$ | async; track route.route_id) {
   <mat-grid-tile>
-    <button mat-fab>
+    <button mat-fab (click)="selectRoute(route.route_short_name.toString())">
       {{route.route_short_name}}
     </button>
   </mat-grid-tile>

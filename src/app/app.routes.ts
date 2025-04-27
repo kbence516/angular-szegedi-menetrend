@@ -11,8 +11,7 @@ export const routes: Routes = [
     redirectTo: '',
   },
   {
-    path: 'route',
-    loadComponent: () => import('./pages/route/route.component').then(m => m.RouteComponent),
-    data: {route_short_name: "21"}
+    path: 'route/:route_short_name',
+    loadComponent: () => import('./pages/route/route.component').then(m => m.RouteComponent)
   },
 ];
