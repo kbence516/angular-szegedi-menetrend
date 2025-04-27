@@ -1,5 +1,5 @@
 export interface Calendar {
-  service_id: number;
+  service_id: string;
   monday: number;
   tuesday: number;
   wednesday: number;
@@ -7,7 +7,7 @@ export interface Calendar {
   friday: number;
   saturday: number;
   sunday: number;
-  start_date: Date;
-  end_date: Date
+  start_date: number;
+  end_date: number
 }
 

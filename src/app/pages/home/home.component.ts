@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.routes$ = this.routeService.fetchAll().pipe(
-      map((routes: Route[]) => routes.sort((a, b) => a.route_short_name.localeCompare(b.route_short_name)))
+      map((routes: Route[]) => routes.sort((a, b) => a.route_short_name.toString().localeCompare(b.route_short_name.toString())))
     );
   }
 }

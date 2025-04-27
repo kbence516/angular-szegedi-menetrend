@@ -1,0 +1,64 @@
+<h1>{{route_short_name}}</h1>
+<mat-select (valueChange)="changeHeadsign($event)" [value]="-1">
+  <mat-option disabled [value]="-1">Válassz végállomást</mat-option>
+  @for (headsign of headsigns$ | async; track $index) {
+  <mat-option [value]="headsign.direction_id">{{headsign.trip_headsign}}</mat-option>
+  }
+</mat-select>
+
+@if (headsignSelected) {
+<mat-select (valueChange)="changeStop($event)" [value]="-1">
+  <mat-option disabled [value]="-1">Válassz megállót</mat-option>
+  @for (stop of stops$ | async; track $index) {
+  <mat-option [value]="stop.stop_id">{{stop.stop_name}}</mat-option>
+  }
+</mat-select>
+}
+
+@if (stopSelected) {
+<div class="table-container">
+  <mat-table [dataSource]="stopTimes$" class="table">
+    <ng-container matColumnDef="hour">
+      <mat-cell *matCellDef="let stopTime"> {{stopTime.hour}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="times">
+      <mat-cell *matCellDef="let stopTime">
+        <ng-container *ngFor="let time of stopTime.times">
+          <span class="minutes">{{time.arrival_time | minutes}}</span>
+        </ng-container>
+      </mat-cell>
+    </ng-container>
+    <mat-row *matRowDef="let row; columns: ['hour', 'times'];"></mat-row>
+  </mat-table>
+</div>
+}
+
+
+
+
+
+
+<!-- 
+<div class="table-container">
+  <table mat-table [dataSource]="(stopTimes$ | async) ?? []" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="rowNumber">
+      <th mat-header-cell *matHeaderCellDef> # </th>
+      <td mat-cell *matCellDef="let stopTime; let i = index">{{ i + 1 }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="numbers">
+      <th mat-header-cell *matHeaderCellDef> Numbers </th>
+      <td mat-cell *matCellDef="let stopTime">
+        <div class="numbers-cell">
+          <span *ngFor="let s of stopTime" class="number">
+            {{ s.arrival_time }}
+          </span>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['rowNumber', 'numbers']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['rowNumber', 'numbers'];"></tr>
+  </table>
+</div> -->
