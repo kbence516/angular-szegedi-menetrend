@@ -8,8 +8,30 @@
 
 table {
   width: auto;
+  margin: 25px;
 }
 
 .minutes {
   padding-right: 25px;
+}
+
+.mat-mdc-card {
+  align-items: center;
+}
+
+.mat-mdc-select {
+  display: flex;
+  background-color: lightgray;
+  width: auto;
+  min-width: unset !important;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.go-home {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  z-index: 1000;
 }

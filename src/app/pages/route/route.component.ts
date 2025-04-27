@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, Input, OnInit } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Timestamp } from 'firebase/firestore';
 import { forkJoin, map, Observable, switchMap } from 'rxjs';
 import { Route } from '../../shared/models/route';
@@ -16,10 +18,23 @@ import { StopTimeService } from '../../shared/services/stop-time.service';
 import { StopService } from '../../shared/services/stop.service';
 import { TripService } from '../../shared/services/trip.service';
 import { PopupComponent } from '../../shared/util/popup/popup.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-route',
-  imports: [MatSelectModule, CommonModule, MatTableModule, MinutesPipe, MatDialogModule],
+  imports: [
+    MatSelectModule,
+    CommonModule,
+    MatTableModule,
+    MinutesPipe,
+    MatDialogModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatButtonModule,
+    RouterModule
+  ],
   templateUrl: './route.component.html',
   styleUrl: './route.component.scss'
 })

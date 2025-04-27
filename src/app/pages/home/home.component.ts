@@ -8,16 +8,16 @@ import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { Route } from '../../shared/models/route';
 import { RouteService } from '../../shared/services/route.service';
-
+import { MatCardModule } from '@angular/material/card'
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, MatGridListModule, MatButtonModule, MatProgressSpinnerModule],
+  imports: [CommonModule, MatGridListModule, MatButtonModule, MatProgressSpinnerModule, MatCardModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
-    private routeService = inject(RouteService);
+  private routeService = inject(RouteService);
   private router = inject(Router);
 
   routes$: Observable<Route[]>;
