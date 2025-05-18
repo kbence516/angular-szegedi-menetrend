@@ -1,0 +1,83 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "comments",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "route_short_name",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "last_modified",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "stop_times",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "trip_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "stop_sequence",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "route_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "direction_id",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "route_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "service_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "direction_id",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "trips",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "service_id",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "route_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "direction_id",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
