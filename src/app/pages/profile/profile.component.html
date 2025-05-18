@@ -1,0 +1,26 @@
+<div class="content-top">
+  @let user = currentUser$ | async;
+  <div class="div-center">
+    <h1>Profilom</h1>
+    <h2>Szép napot, {{user!.email}}!</h2>
+    <mat-card class="big-card">
+      <mat-card-title>Jelszó megváltozatása</mat-card-title>
+      <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
+        <mat-card-content>
+          <mat-form-field>
+            <mat-label>Új jelszó</mat-label>
+            <input type="password" placeholder="Min. 8 karakter" matInput formControlName="newPassword">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Új jelszó megerősítése</mat-label>
+            <input type="password" placeholder="Min. 8 karakter" matInput formControlName="newPasswordConfirm">
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="m10" mat-raised-button type="submit"
+            [disabled]="changePasswordForm.invalid"><mat-icon>check</mat-icon>Rendben</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
+</div>

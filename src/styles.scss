@@ -8,12 +8,23 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.content-top {
+  justify-content: center;
+  height: 100vh;
+}
+
 .content-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.content-center *,
+.content-top * {
+  text-align: center;
+  justify-content: center;
 }
 
 .mat-mdc-tab-body-wrapper {
