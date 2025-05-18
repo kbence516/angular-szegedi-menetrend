@@ -1,0 +1,10 @@
+<div class="navbar">
+  <button class="m10" mat-mini-fab (click)="goTo('/')" matTooltip="Kezdőlap"><mat-icon>home</mat-icon></button>
+  @if (currentUser$ | async; as user) {
+    <button class="m10" mat-mini-fab (click)="goTo('/profile')" matTooltip="Vélemények"><mat-icon>comment</mat-icon></button>
+    <button class="m10" mat-mini-fab (click)="goTo('/profile')" matTooltip="Profilom"><mat-icon>account_circle</mat-icon></button>
+    <button class="m10" mat-mini-fab (click)="logout()" matTooltip="Kijelentkezés"><mat-icon>logout</mat-icon></button>
+  } @else {
+  <button class="m10" mat-mini-fab (click)="goTo('/login')" matTooltip="Bejelentkezés"><mat-icon>login</mat-icon></button>
+}
+</div>
