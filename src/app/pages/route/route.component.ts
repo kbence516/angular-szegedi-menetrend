@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, Input, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
@@ -12,14 +14,13 @@ import { Route } from '../../shared/models/route';
 import { Stop } from '../../shared/models/stop';
 import { StopTime } from '../../shared/models/stop_time';
 import { Trip } from '../../shared/models/trip';
+import { HoursPipe } from '../../shared/pipes/hours.pipe';
 import { MinutesPipe } from '../../shared/pipes/minutes.pipe';
 import { RouteService } from '../../shared/services/route.service';
 import { StopTimeService } from '../../shared/services/stop-time.service';
 import { StopService } from '../../shared/services/stop.service';
 import { TripService } from '../../shared/services/trip.service';
 import { PopupComponent } from '../../shared/util/popup/popup.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-route',
@@ -33,7 +34,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatProgressSpinnerModule,
     MatIconModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    HoursPipe
   ],
   templateUrl: './route.component.html',
   styleUrl: './route.component.scss'

@@ -24,7 +24,7 @@
     <table mat-table [dataSource]="stopTimes$">
       <ng-container matColumnDef="hour">
         <th mat-header-cell *matHeaderCellDef>Óra</th>
-        <td mat-cell *matCellDef="let stopTime"> {{stopTime.hour}} </td>
+        <td mat-cell *matCellDef="let stopTime"> {{stopTime.hour | hours}} </td>
       </ng-container>
       <ng-container matColumnDef="times">
         <th mat-header-cell *matHeaderCellDef>Perc</th>
