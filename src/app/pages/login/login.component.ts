@@ -3,17 +3,17 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
-import { catchError, Observable, tap } from 'rxjs';
-import { fieldsMatchValidator, nonEmptyStringValidator } from '../../shared/util/validators';
-import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { catchError, tap } from 'rxjs';
+import { AuthService } from '../../shared/services/auth.service';
 import { PopupComponent } from '../../shared/util/popup/popup.component';
+import { fieldsMatchValidator, nonEmptyStringValidator } from '../../shared/util/validators';
 
 @Component({
   selector: 'app-login',
@@ -55,21 +55,16 @@ export class LoginComponent {
     },
   );
 
-
   login(): void {
     if (this.loginForm.invalid) {
       return;
     }
     this.authService.login(this.loginForm.controls.lEmail.value!, this.loginForm.controls.lPassword.value!).pipe(
-      tap((login) => {
-        if (login) {
-          this.router.navigate(['/']);
-        }
-      }),
+      tap(() => { this.router.navigate(['/']) }),
       catchError((e: Error) =>
         this.dialog.open(
           PopupComponent,
-          { data: { title: 'Hiba', message: e.message, options: ['Vissza'] } })
+          { data: { title: 'Hiba', message: e, options: ['Vissza'] } })
           .afterClosed()
       )
     ).subscribe();
@@ -80,11 +75,7 @@ export class LoginComponent {
       return;
     }
     this.authService.register(this.registerForm.controls.rEmail.value!, this.registerForm.controls.rPassword.value!).pipe(
-      tap((register) => {
-        if (register) {
-          this.router.navigate(['/']);
-        }
-      }),
+      tap(() => { this.router.navigate(['/']) }),
       catchError((e: Error) =>
         this.dialog.open(
           PopupComponent,
