@@ -13,7 +13,7 @@ import { AuthService } from '../../shared/services/auth.service';
   selector: 'app-navigation',
   imports: [MatButtonModule, CommonModule, RouterModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule, MatTooltipModule],
   templateUrl: './navigation.component.html',
-  styleUrls: ['../../app.component.scss', './navigation.component.scss']
+  styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent implements OnInit, OnDestroy {
   currentUser$: Observable<User | null | undefined>;

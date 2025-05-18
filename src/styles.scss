@@ -33,6 +33,10 @@ body {
   width: 100%;
 }
 
+.mat-mdc-form-field {
+  width: 90%;
+}
+
 .loading-indicator {
   position: absolute;
   left: 0;
@@ -52,4 +56,34 @@ body {
 
 .m30 {
   margin: 30px;
+}
+
+.big-card {
+  min-width: 300px;
+  width: 30%;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.huge-card {
+  min-width: 300px;
+  width: 60%;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.div-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }

@@ -29,7 +29,7 @@ import { fieldsMatchValidator, nonEmptyStringValidator } from '../../shared/util
     MatSnackBarModule
   ],
   templateUrl: './login.component.html',
-  styleUrls: ['../../app.component.scss', './login.component.scss']
+  styleUrl: './login.component.scss'
 })
 
 export class LoginComponent {
@@ -79,7 +79,7 @@ export class LoginComponent {
       catchError((e: Error) =>
         this.dialog.open(
           PopupComponent,
-          { data: { title: 'Hiba', message: e.message, options: ['Vissza'] } })
+          { data: { title: 'Hiba', message: e, options: ['Vissza'] } })
           .afterClosed()
       )
     ).subscribe();

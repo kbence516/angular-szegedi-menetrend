@@ -23,15 +23,15 @@ export class AuthService {
 
   login(email: string, password: string): Observable<void> {
     return from(signInWithEmailAndPassword(this.auth, email, password)).pipe(
-      map(() => {}),
-      catchError((e: FirebaseError) => throwError(() => e.message))
+      map(() => { }),
+      catchError((e: FirebaseError) => throwError(() => this.resolveError(e.code)))
     )
   }
 
   register(email: string, password: string): Observable<void> {
     return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
-      map(() => {}),
-      catchError((e: FirebaseError) => throwError(() => e.message))
+      map(() => { }),
+      catchError((e: FirebaseError) => throwError(() => this.resolveError(e.code)))
     )
   }
 
@@ -44,9 +44,22 @@ export class AuthService {
       filter((u) => !!u),
       switchMap((u) =>
         from(updatePassword(u, newPassword)).pipe(
-          catchError((e: FirebaseError) => {debugger; return throwError(() => e.message)})
+          catchError((e: FirebaseError) => throwError(() => this.resolveError(e.code)))
         )
       )
     );
+  }
+
+  resolveError(errorCode: string) {
+    switch (errorCode) {
+      case 'auth/invalid-credential':
+        return 'Hibás felhasználónév vagy jelszó!';
+      case 'auth/email-already-in-use':
+        return 'Ezzel az email címmel már létezik regisztrált felhasználó!';
+      case 'auth/requires-recent-login':
+        return 'Jelentkezz be újra a művelet elvégzéséhez!';
+      default:
+        return errorCode;
+    }
   }
 }

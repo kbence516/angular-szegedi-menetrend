@@ -1,0 +1,36 @@
+<div class="content-top">
+  <div class="div-center">
+    <h1>Vélemények</h1>
+    <h2>Mi a véleményed a szegedi tömegközlekedésről? Fejtsd ki, tegyük együtt jobbá a közlekedést!</h2>
+    <mat-card class="huge-card">
+      <mat-card-title>Írd le a véleményed!</mat-card-title>
+      <form [formGroup]="opinionFormGroup" (ngSubmit)="addOpinion()">
+        <mat-card-content>
+          <mat-form-field>
+            <textarea matInput formControlName="opinion"></textarea>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="m10" mat-raised-button type="submit"
+            [disabled]="opinionFormGroup.invalid"><mat-icon>add</mat-icon>Hozzáadás</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+    @for (opinion of opinions$ | async; track opinion.created) {
+    <mat-card class="huge-card">
+      <mat-card-title><span class="bold">{{opinion.author}}</span> véleménye <span class="italic">&#40;{{opinion.created
+          | hungarianDate}}&#41;</span></mat-card-title>
+      <mat-card-content>
+        <p>{{opinion.content}}</p>
+      </mat-card-content>
+      @if (authorsOpinion$(opinion) | async) {
+      <mat-card-actions>
+        <button class="m10" mat-raised-button (click)="delete(opinion.id)"><mat-icon>delete_outline</mat-icon>Törlés</button>
+      </mat-card-actions>
+      }
+    </mat-card>
+    } @empty {
+    <p>Egyelőre nem érkezett egy vélemény sem. Légy te az első, aki hozzászól!</p>
+    }
+  </div>
+</div>

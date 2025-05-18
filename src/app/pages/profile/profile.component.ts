@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { User } from 'firebase/auth';
-import { catchError, Observable, Subject, takeUntil } from 'rxjs';
+import { catchError, map, Observable, Subject, takeUntil } from 'rxjs';
 import { AuthService } from '../../shared/services/auth.service';
 import { fieldsMatchValidator, nonEmptyStringValidator } from '../../shared/util/validators';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,7 +18,7 @@ import { PopupComponent } from '../../shared/util/popup/popup.component';
   selector: 'app-profile',
   imports: [CommonModule, MatProgressSpinnerModule, MatFormFieldModule, ReactiveFormsModule, MatIconModule, MatCardModule, MatInputModule, MatButtonModule],
   templateUrl: './profile.component.html',
-  styleUrls: ['../../app.component.scss', './profile.component.scss']
+  styleUrl: './profile.component.scss'
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   stop$ = new Subject<void>();
@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       return;
     }
     this.authService.changePassword(this.changePasswordForm.controls.newPassword.value!).pipe(
+      map(() => this.authService.logout()),
       catchError((e: Error) =>
         this.dialog.open(
           PopupComponent,
