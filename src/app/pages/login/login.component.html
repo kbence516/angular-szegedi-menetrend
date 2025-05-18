@@ -1,0 +1,52 @@
+<div class="content-center">
+  <h1>Szegedi menetrend</h1>
+  <h2>Regisztrálj vagy jelentkezz be a folytatáshoz!</h2>
+  <mat-tab-group dynamicHeight [selectedIndex]="1">
+    <mat-tab label="{{'Regisztráció' | uppercase}}">
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <div class="m30">
+          <mat-form-field>
+            <mat-label>Email cím</mat-label>
+            <input matInput type="email" placeholder="email@email.com" formControlName="rEmail">
+          </mat-form-field>
+        </div>
+        <div class="m30">
+          <mat-form-field>
+            <mat-label>Jelszó</mat-label>
+            <input type="password" matInput formControlName="rPassword">
+          </mat-form-field>
+        </div>
+        <div class="m30">
+          <mat-form-field>
+            <mat-label>Jelszó újra</mat-label>
+            <input matInput type="password" formControlName="rPasswordAgain">
+          </mat-form-field>
+        </div>
+        <div class="center">
+          <button class="m10" mat-raised-button type="submit"
+            [disabled]="!registerForm.valid"><mat-icon>check</mat-icon>Regisztráció</button>
+        </div>
+      </form>
+    </mat-tab>
+    <mat-tab label="{{'Bejelentkezés' | uppercase}}">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="m30">
+          <mat-form-field>
+            <mat-label>Email cím</mat-label>
+            <input matInput type="email" placeholder="email@email.com" formControlName="lEmail">
+          </mat-form-field>
+        </div>
+        <div class="m30">
+          <mat-form-field>
+            <mat-label>Jelszó</mat-label>
+            <input type="password" matInput formControlName="lPassword">
+          </mat-form-field>
+        </div>
+        <div class="center">
+          <button class="m10" mat-raised-button type="submit"
+            [disabled]="!loginForm.valid"><mat-icon>check</mat-icon>Belépés</button>
+        </div>
+      </form>
+    </mat-tab>
+  </mat-tab-group>
+</div>

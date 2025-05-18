@@ -16,6 +16,12 @@ body {
   height: 100%;
 }
 
+.mat-mdc-tab-body-wrapper {
+  background-color: #d9dff0;
+  display: block !important;
+  width: 100%;
+}
+
 .loading-indicator {
   position: absolute;
   left: 0;
